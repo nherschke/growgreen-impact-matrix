@@ -10,6 +10,7 @@ import { NbsComponent } from './nbs/nbs.component';
 import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { AboutComponent } from './about/about.component';
 import { FutureComponent } from './future/future.component';
+import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FutureComponent } from './future/future.component';
     NbsComponent,
     GreenRoofComponent,
     AboutComponent,
-    FutureComponent
+    FutureComponent,
+    VerticalGardenComponent
   ],
   imports: [
     BrowserModule,
