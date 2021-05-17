@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NbsComponent } from './nbs/nbs.component';
 import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { AboutComponent } from './about/about.component';
+import { FutureComponent } from './future/future.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutComponent } from './about/about.component';
     NavbarComponent,
     NbsComponent,
     GreenRoofComponent,
-    AboutComponent
+    AboutComponent,
+    FutureComponent
   ],
   imports: [
     BrowserModule,
