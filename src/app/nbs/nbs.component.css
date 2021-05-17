@@ -3,3 +3,12 @@ img {
     height: 300px;
     object-fit: cover;
 }
+
+img.coming-soon {
+    filter: sepia();
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
