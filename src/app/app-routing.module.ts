@@ -5,12 +5,14 @@ import { FutureComponent } from './future/future.component';
 import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { HomeComponent } from './home/home.component';
 import { NbsComponent } from './nbs/nbs.component';
+import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'nbs', component: NbsComponent },
   { path: 'green-roof', component: GreenRoofComponent },
+  { path: 'vertical-garden', component: VerticalGardenComponent },
   { path: 'future', component: FutureComponent },
   { path: 'about', component: AboutComponent },
 ];
