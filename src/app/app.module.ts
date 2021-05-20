@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { FutureComponent } from './future/future.component';
 import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
 import { InputComponent } from './input/input.component';
+import { OutputComponent } from './output/output.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InputComponent } from './input/input.component';
     AboutComponent,
     FutureComponent,
     VerticalGardenComponent,
-    InputComponent
+    InputComponent,
+    OutputComponent
   ],
   imports: [
     BrowserModule,
