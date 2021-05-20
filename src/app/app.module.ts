@@ -11,6 +11,7 @@ import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { AboutComponent } from './about/about.component';
 import { FutureComponent } from './future/future.component';
 import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VerticalGardenComponent } from './vertical-garden/vertical-garden.compo
     GreenRoofComponent,
     AboutComponent,
     FutureComponent,
-    VerticalGardenComponent
+    VerticalGardenComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
