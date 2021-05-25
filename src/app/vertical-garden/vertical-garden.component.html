@@ -1,39 +1,115 @@
 <div class="container">
-    <div class="row mt-5 mb-3">
-       <h1>Vertical Garden</h1>
-    </div>
+  <div class="row mt-5 mb-3">
+    <h1>Vertical Garden</h1>
+  </div>
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
     <div class="row">
-        <div class="card col-md-12">
-            <div class="card-body">
-                <h5 class="card-title">Input</h5>
-                <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="precipitation">Precipitation</label>
-                            <div class="input-group has-validation">
-                                <input type="text" class="form-control text-center" id="precipitation" formControlName="precipitation">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">mm/day</span>
-                                </div>
-                                <div class="invalid-feedback">Please provide a number</div>
-                            </div>
-                            <small class="text-muted">(The maximum amount of rainfall during a day in mm)</small>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="lifespan">Lifespan</label>
-                            <div class="input-group has-validation">
-                                <input type="text" class="form-control text-center" id="lifespan" formControlName="lifespan">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">year(s)</span>
-                                </div>
-                                <div class="invalid-feedback">Please provide a number</div>
-                            </div>
-                            <small class="text-muted">(The amount of years the green roof is expected to function)</small>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Calculate</button>
-                </form>
+      <div class="card col-md-12">
+        <div class="card-body">
+          <h5 class="card-title">Input</h5>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="precipitation">Precipitation</label>
+              <div class="input-group has-validation">
+                <input
+                  type="text"
+                  class="form-control text-center"
+                  id="precipitation"
+                  formControlName="precipitation"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">mm/day</span>
+                </div>
+                <div class="invalid-feedback">Please provide a number</div>
+              </div>
+              <small class="text-muted"
+                >The maximum amount of rainfall during a day in mm</small
+              >
             </div>
+            <div class="form-group col-md-6">
+              <label for="lifespan">Lifespan</label>
+              <div class="input-group has-validation">
+                <input
+                  type="text"
+                  class="form-control text-center"
+                  id="lifespan"
+                  formControlName="lifespan"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">year(s)</span>
+                </div>
+                <div class="invalid-feedback">Please provide a number</div>
+              </div>
+              <small class="text-muted"
+                >The amount of years the green roof is expected to
+                function</small
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="row mt-3">
+      <div class="col-md-2 mx-auto">
+        <div
+          class="btn-group btn-group-toggle"
+          ngbRadioGroup
+          formControlName="toggle"
+        >
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="1" />Roofsize
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="2" />Investment
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="card col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">Calculate with Roofsize</h5>
+          <div class="input-group has-validation">
+            <input
+              type="text"
+              class="form-control text-center"
+              id="roofsize"
+              formControlName="roofsize"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">m<sup>2</sup></span>
+            </div>
+            <div class="invalid-feedback">Please provide a number</div>
+          </div>
+          <small class="text-muted"
+            >The surface size of the green roof in square meters</small
+          >
+        </div>
+      </div>
+      <div class="card col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">Calculate with Investment</h5>
+          <div class="input-group has-validation">
+            <input
+              type="text"
+              class="form-control text-center"
+              id="investment"
+              formControlName="investment"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">€</span>
+            </div>
+            <div class="invalid-feedback">Please provide a number</div>
+          </div>
+          <small class="text-muted"
+            >The investment that is available to construct the green roof in
+            Euro</small
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <button type="submit" class="btn btn-success ml-auto">Calculate</button>
+    </div>
+  </form>
 </div>
