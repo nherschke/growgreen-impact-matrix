@@ -13,6 +13,7 @@ import { FutureComponent } from './future/future.component';
 import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OutputComponent } from './output/output.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
