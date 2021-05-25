@@ -1,1 +1,39 @@
-<p>vertical-garden works!</p>
+<div class="container">
+    <div class="row mt-5 mb-3">
+       <h1>Vertical Garden</h1>
+    </div>
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body">
+                <h5 class="card-title">Input</h5>
+                <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="precipitation">Precipitation</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control text-center" id="precipitation" formControlName="precipitation">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">mm/day</span>
+                                </div>
+                                <div class="invalid-feedback">Please provide a number</div>
+                            </div>
+                            <small class="text-muted">(The maximum amount of rainfall during a day in mm)</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lifespan">Lifespan</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control text-center" id="lifespan" formControlName="lifespan">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">year(s)</span>
+                                </div>
+                                <div class="invalid-feedback">Please provide a number</div>
+                            </div>
+                            <small class="text-muted">(The amount of years the green roof is expected to function)</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Calculate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
