@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class VerticalGardenComponent implements OnInit {
   inputForm: FormGroup;
+  toggle: boolean = true;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -15,30 +16,21 @@ export class VerticalGardenComponent implements OnInit {
     this.inputForm = this.formBuilder.group({
       precipitation: '',
       lifespan: '',
-      roofsize: [{ value: '', disabled: false }],
-      investment: [{ value: '', disabled: true }],
+      roofsize: '',
+      investment: '',
       toggle: '1',
     });
 
     this.inputForm.get('toggle').valueChanges.subscribe((value) => {
       if (value === '1') {
-        this.inputForm.get('investment').reset();
-        this.inputForm.get('investment').disable();
-        this.inputForm.get('roofsize').enable();
+        this.toggle = true;
       } else {
-        this.inputForm.get('roofsize').reset();
-        this.inputForm.get('roofsize').disable();
-        this.inputForm.get('investment').enable();
+        this.toggle = false;
       }
     });
   }
 
   onSubmit(): void {
     console.log(this.inputForm);
-  }
-
-  checkToggle(): string {
-    let toggle = this.inputForm.get('toggle') as FormControl;
-    return toggle.value;
   }
 }
