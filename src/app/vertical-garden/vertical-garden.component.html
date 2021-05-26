@@ -4,7 +4,7 @@
   </div>
   <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
     <div class="row">
-      <div class="card col-md-12">
+      <div class="card col-md-12 shadow">
         <div class="card-body">
           <h5 class="card-title">Input</h5>
           <div class="form-row">
@@ -49,24 +49,24 @@
         </div>
       </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-4">
       <div class="col-md-2 mx-auto">
         <div
           class="btn-group btn-group-toggle"
           ngbRadioGroup
           formControlName="toggle"
         >
-          <label ngbButtonLabel class="btn-primary">
+          <label ngbButtonLabel class="btn btn-sm btn-light">
             <input ngbButton type="radio" value="1" />Roofsize
           </label>
-          <label ngbButtonLabel class="btn-primary">
+          <label ngbButtonLabel class="btn btn-sm btn-light">
             <input ngbButton type="radio" value="2" />Investment
           </label>
         </div>
       </div>
     </div>
     <div class="row mt-3">
-      <div class="card col-md-6">
+      <div *ngIf="toggle" class="card col-md-6 mx-auto shadow">
         <div class="card-body">
           <h5 class="card-title">Calculate with Roofsize</h5>
           <div class="input-group has-validation">
@@ -86,7 +86,7 @@
           >
         </div>
       </div>
-      <div class="card col-md-6">
+      <div *ngIf="!toggle" class="card col-md-6 mx-auto shadow">
         <div class="card-body">
           <h5 class="card-title">Calculate with Investment</h5>
           <div class="input-group has-validation">
@@ -108,8 +108,14 @@
         </div>
       </div>
     </div>
-    <div class="row mt-3">
-      <button type="submit" class="btn btn-success ml-auto">Calculate</button>
+    <div class="row mt-5">
+      <button
+        type="submit"
+        class="btn btn-success mx-auto"
+        style="background-image: linear-gradient(to right, #099cb7, #5ab14b)"
+      >
+        CALCULATE
+      </button>
     </div>
   </form>
 </div>
