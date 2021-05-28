@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="card col-md-12 shadow">
+    <div *ngIf="method === 'wall-size'" class="card col-md-12 shadow">
       <div class="card-body">
         <h5 class="card-title text-center">Calculated with Wall Size</h5>
         <hr />
@@ -38,6 +38,20 @@
           <p class="col-md-2">40 m<sup>2</sup></p>
           <p class="col-md-8">
             The surface size of the vertical garden in square meters.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="method === 'investment'" class="card col-md-12 shadow">
+      <div class="card-body">
+        <h5 class="card-title text-center">Calculated with Investment</h5>
+        <hr />
+        <div class="row">
+          <p class="col-md-2">Investment</p>
+          <p class="col-md-2">{{ investment }}</p>
+          <p class="col-md-8">
+            The investment that is available to construct the green roof in
+            Euro.
           </p>
         </div>
       </div>
@@ -60,23 +74,35 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">NO<sub>2</sub></p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.NO2_MIN }}–{{ data.NO2_MAX }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">SO<sub>2</sub></p>
-                        <p class="col-md-3">amount</p>
+                        <p class="col-md-3">{{ data.SO2 }}</p>
                         <p class="col-md-3">%</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">PM10</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.PM10_MIN }}–{{ data.PM10_MAX }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">CO<sub>2</sub></p>
-                        <p class="col-md-3">range</p>
-                        <p class="col-md-3">g/x year(s)</p>
+                        <p class="col-md-3">
+                          {{
+                            wallSize * lifespan * data.CO2_SEQUESTRATION_MIN
+                              | number
+                          }}–{{
+                            wallSize * lifespan * data.CO2_SEQUESTRATION_MAX
+                              | number
+                          }}
+                        </p>
+                        <p class="col-md-3">g/{{ lifespan }} year(s)</p>
                       </div>
                     </div>
                   </div>
