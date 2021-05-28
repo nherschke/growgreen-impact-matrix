@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vertical-garden',
@@ -10,7 +11,7 @@ export class VerticalGardenComponent implements OnInit {
   inputForm: FormGroup;
   toggle: boolean = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.inputForm = this.formBuilder.group({
@@ -32,5 +33,14 @@ export class VerticalGardenComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.inputForm);
+    if (this.toggle) {
+      this.router.navigate(['/', 'output'], {
+        queryParams: { method: 'wall-size' },
+      });
+    } else {
+      this.router.navigate(['/', 'output'], {
+        queryParams: { method: 'investment' },
+      });
+    }
   }
 }
