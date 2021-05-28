@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-vertical-garden',
@@ -16,7 +16,7 @@ export class VerticalGardenComponent implements OnInit {
     this.inputForm = this.formBuilder.group({
       precipitation: '',
       lifespan: '',
-      roofsize: '',
+      wallSize: '',
       investment: '',
       toggle: '1',
     });
