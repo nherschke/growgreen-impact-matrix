@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CalculationService } from '../calculation.service';
 
 @Component({
   selector: 'app-vertical-garden',
@@ -11,7 +12,11 @@ export class VerticalGardenComponent implements OnInit {
   inputForm: FormGroup;
   toggle: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private calculationService: CalculationService
+  ) {}
 
   ngOnInit(): void {
     this.inputForm = this.formBuilder.group({
@@ -32,12 +37,21 @@ export class VerticalGardenComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.inputForm);
     if (this.toggle) {
+      this.calculationService.calculateWithWallSize(
+        this.inputForm.get('precipitation').value,
+        this.inputForm.get('lifespan').value,
+        this.inputForm.get('wallSize').value
+      );
       this.router.navigate(['/', 'output'], {
         queryParams: { method: 'wall-size' },
       });
     } else {
+      this.calculationService.calculateWithInvestment(
+        this.inputForm.get('precipitation').value,
+        this.inputForm.get('lifespan').value,
+        this.inputForm.get('investment').value
+      );
       this.router.navigate(['/', 'output'], {
         queryParams: { method: 'investment' },
       });
