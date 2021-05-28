@@ -20,8 +20,9 @@
           <p class="col-md-2">Expected lifespan</p>
           <p class="col-md-2">{{ lifespan }} year(s)</p>
           <p class="col-md-8">
-            (The amount of years that the green roof is expected to function.
-            The literature recommends the minimum lifespan of 20 years.)
+            (The amount of years that the vertical garden is expected to
+            function. The literature recommends the minimum lifespan of 20
+            years.)
           </p>
         </div>
       </div>
@@ -30,13 +31,13 @@
   <div class="row mt-3">
     <div class="card col-md-12 shadow">
       <div class="card-body">
-        <h5 class="card-title text-center">Calculated with roofsize</h5>
+        <h5 class="card-title text-center">Calculated with Wall Size</h5>
         <hr />
         <div class="row">
-          <p class="col-md-2">Roofsize</p>
+          <p class="col-md-2">Wall Size</p>
           <p class="col-md-2">40 m<sup>2</sup></p>
           <p class="col-md-8">
-            The surface size of the green roof in square meters.
+            The surface size of the vertical garden in square meters.
           </p>
         </div>
       </div>
@@ -46,25 +47,124 @@
     <h3 class="mx-auto">Output</h3>
   </div>
   <div class="row mt-3 mb-5">
-    <div class="card shadow">
+    <div class="card col-md-12 shadow">
       <div class="card-body">
         <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
           <li [ngbNavItem]="1">
-            <a ngbNavLink>One</a>
+            <a ngbNavLink>Environmental</a>
             <ng-template ngbNavContent>
-              <p>
-                Raw denim you probably haven't heard of them jean shorts Austin.
-                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
-                Mustache cliche tempor, williamsburg carles vegan helvetica.
-                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
-                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                placeat salvia cillum iphone. Seitan aliquip quis cardigan
-                american apparel, butcher voluptate nisi qui.
-              </p>
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <h5 class="text-center">Air Quality</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">NO<sub>2</sub></p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">SO<sub>2</sub></p>
+                        <p class="col-md-3">amount</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">PM10</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">CO<sub>2</sub></p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">g/x year(s)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-center">Water Quality</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Nitrates</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Total Suspended Solids</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Phosphor</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h5 class="text-center">Energy Use</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Energy Use</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">%</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-center">Water Quantity</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Retained Water</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">mm/day</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h5 class="text-center">Noise</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Noise Reduction</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">dB</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-center">Temperature</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Outdoor</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">&deg;C</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Indoor</p>
+                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">&deg;C</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </ng-template>
           </li>
           <li [ngbNavItem]="2">
-            <a ngbNavLink>Two</a>
+            <a ngbNavLink>Social</a>
             <ng-template ngbNavContent>
               <p>
                 Exercitation +1 labore velit, blog sartorial PBR leggings next
@@ -82,7 +182,7 @@
             </ng-template>
           </li>
           <li [ngbNavItem]="3">
-            <a ngbNavLink>Three</a>
+            <a ngbNavLink>Economic</a>
             <ng-template ngbNavContent>
               <p>
                 Sed commodo, leo at suscipit dictum, quam est porttitor sapien,
@@ -101,7 +201,6 @@
             </ng-template>
           </li>
         </ul>
-        <h5 class="card-title mt-3">Special title treatment</h5>
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
         <pre>Active: {{ active }}</pre>
       </div>
