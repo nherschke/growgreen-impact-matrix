@@ -30,6 +30,13 @@ export class OutputComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.method = params['method'];
     });
+
+    if (this.method === 'wall-size') {
+      this.calculationService.calculateWithWallSize();
+    }
+    if (this.method === 'investment') {
+      this.calculationService.calculateWithInvestment();
+    }
   }
 
   active = 1;
