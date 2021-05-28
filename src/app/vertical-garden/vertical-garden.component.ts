@@ -37,21 +37,18 @@ export class VerticalGardenComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.calculationService.setInput(
+      this.inputForm.get('precipitation').value,
+      this.inputForm.get('lifespan').value,
+      this.inputForm.get('wallSize').value,
+      this.inputForm.get('investment').value
+    );
+
     if (this.toggle) {
-      this.calculationService.calculateWithWallSize(
-        this.inputForm.get('precipitation').value,
-        this.inputForm.get('lifespan').value,
-        this.inputForm.get('wallSize').value
-      );
       this.router.navigate(['/', 'output'], {
         queryParams: { method: 'wall-size' },
       });
     } else {
-      this.calculationService.calculateWithInvestment(
-        this.inputForm.get('precipitation').value,
-        this.inputForm.get('lifespan').value,
-        this.inputForm.get('investment').value
-      );
       this.router.navigate(['/', 'output'], {
         queryParams: { method: 'investment' },
       });
