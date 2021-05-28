@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppData } from '../app.data';
+import { CalculationService } from '../calculation.service';
 
 @Component({
   selector: 'app-output',
@@ -9,12 +10,21 @@ import { AppData } from '../app.data';
 })
 export class OutputComponent implements OnInit {
   method: string;
-  precipitation: number = 330;
-  lifespan: number = 22;
-  wallSize: number = 50;
-  investment: number = 4000;
+  precipitation: number;
+  lifespan: number;
+  wallSize: number;
+  investment: number;
 
-  constructor(private route: ActivatedRoute, private data: AppData) {}
+  constructor(
+    private route: ActivatedRoute,
+    private data: AppData,
+    private calculationService: CalculationService
+  ) {
+    this.precipitation = calculationService.precipitation;
+    this.lifespan = calculationService.lifespan;
+    this.wallSize = calculationService.wallSize;
+    this.investment = calculationService.investment;
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
