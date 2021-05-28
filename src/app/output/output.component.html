@@ -35,7 +35,7 @@
         <hr />
         <div class="row">
           <p class="col-md-2">Wall Size</p>
-          <p class="col-md-2">40 m<sup>2</sup></p>
+          <p class="col-md-2">{{ wallSize }}</p>
           <p class="col-md-8">
             The surface size of the vertical garden in square meters.
           </p>
@@ -94,12 +94,8 @@
                       <div class="row">
                         <p class="col-md-6">CO<sub>2</sub></p>
                         <p class="col-md-3">
-                          {{
-                            wallSize * lifespan * data.CO2_SEQUESTRATION_MIN
-                              | number
-                          }}–{{
-                            wallSize * lifespan * data.CO2_SEQUESTRATION_MAX
-                              | number
+                          {{ calculationService.co2min | number }}–{{
+                            calculationService.co2max | number
                           }}
                         </p>
                         <p class="col-md-3">g/{{ lifespan }} year(s)</p>
@@ -113,17 +109,27 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">Nitrates</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.NO3_REDUCTION_MIN }}–{{
+                            data.NO3_REDUCTION_MAX
+                          }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Total Suspended Solids</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.TSS_REDUCTION_MIN }}–{{
+                            data.TSS_REDUCTION_MAX
+                          }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Phosphor</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.P_REDUCTION_MIN }}–{{ data.P_REDUCTION_MAX }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                     </div>
@@ -137,7 +143,11 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">Energy Use</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.ENERGY_REDUCTION_MIN }}–{{
+                            data.ENERGY_REDUCTION_MAX
+                          }}
+                        </p>
                         <p class="col-md-3">%</p>
                       </div>
                     </div>
@@ -149,7 +159,11 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">Retained Water</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ calculationService.retentionMin | number }}–{{
+                            calculationService.retentionMax | number
+                          }}
+                        </p>
                         <p class="col-md-3">mm/day</p>
                       </div>
                     </div>
@@ -163,7 +177,11 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">Noise Reduction</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.NOISE_REDUCTION_MIN }}–{{
+                            data.NOISE_REDUCTION_MAX
+                          }}
+                        </p>
                         <p class="col-md-3">dB</p>
                       </div>
                     </div>
@@ -175,12 +193,16 @@
                     <div class="card-body">
                       <div class="row">
                         <p class="col-md-6">Outdoor</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">
+                          {{ data.TEMPERATURE_OUTDOOR_MIN }}–{{
+                            data.TEMPERATURE_OUTDOOR_MAX
+                          }}
+                        </p>
                         <p class="col-md-3">&deg;C</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Indoor</p>
-                        <p class="col-md-3">range</p>
+                        <p class="col-md-3">{{ data.TEMPERATURE_INDOOR }}</p>
                         <p class="col-md-3">&deg;C</p>
                       </div>
                     </div>
