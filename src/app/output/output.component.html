@@ -309,6 +309,98 @@
                   </div>
                 </div>
               </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h5 class="text-center">
+                    Environmental Impact Cost Benefits
+                  </h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Air Quality</p>
+                        <p class="col-md-3">
+                          {{ calculationService.airQualityCB }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Stormwater Management</p>
+                        <p class="col-md-3">
+                          {{ calculationService.smReductionMin }}–{{
+                            calculationService.smReductionMax
+                          }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Energy Reduction</p>
+                        <p class="col-md-3">
+                          {{ calculationService.energyReductionMin }}–{{
+                            calculationService.energyReductionMax
+                          }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-center">Economic Cost Benefits</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Wall Longevity</p>
+                        <p class="col-md-3">
+                          {{ calculationService.wallLongevity }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Raised Property Value</p>
+                        <p class="col-md-3">
+                          {{ calculationService.propertyValue }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h5 class="text-center">Total Cost Benefits</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Total</p>
+                        <p class="col-md-3">
+                          {{ calculationService.totalCostBenefitsMin }}–{{
+                            calculationService.totalCostBenefitsMax
+                          }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-center">Social Impact Cost Benefits</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Noise Reduction</p>
+                        <p class="col-md-3">-</p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Recreational Space</p>
+                        <p class="col-md-3">-</p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </ng-template>
           </li>
         </ul>
