@@ -35,7 +35,7 @@
         <hr />
         <div class="row">
           <p class="col-md-2">Wall Size</p>
-          <p class="col-md-2">{{ wallSize }}</p>
+          <p class="col-md-2">{{ wallSize }} m<sup>2</sup></p>
           <p class="col-md-8">
             The surface size of the vertical garden in square meters.
           </p>
@@ -47,11 +47,15 @@
         <h5 class="card-title text-center">Calculated with Investment</h5>
         <hr />
         <div class="row">
-          <p class="col-md-2">Investment</p>
-          <p class="col-md-2">{{ investment }}</p>
+          <p class="col-md-2">Estimated Wall Size</p>
+          <p class="col-md-2">
+            {{ calculationService.wallSizeMin | number }}–{{
+              calculationService.wallSizeMax | number
+            }}
+            m<sup>2</sup>
+          </p>
           <p class="col-md-8">
-            The investment that is available to construct the green roof in
-            Euro.
+            The surface size of the vertical garden in square meters.
           </p>
         </div>
       </div>
@@ -264,20 +268,47 @@
           <li [ngbNavItem]="3">
             <a ngbNavLink>Economic</a>
             <ng-template ngbNavContent>
-              <p>
-                Sed commodo, leo at suscipit dictum, quam est porttitor sapien,
-                eget sodales nibh elit id diam. Nulla facilisi. Donec egestas
-                ligula vitae odio interdum aliquet. Duis lectus turpis, luctus
-                eget tincidunt eu, congue et odio. Duis pharetra et nisl at
-                faucibus. Quisque luctus pulvinar arcu, et molestie lectus
-                ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat
-                volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus
-                nisl enim, nec tristique ipsum euismod facilisis. Morbi ut
-                bibendum est, eu tincidunt odio. Orci varius natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Mauris
-                aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus
-                nec tortor vel tellus pulvinar feugiat.
-              </p>
+              <div class="row mt-4">
+                <div class="col-md-6 mx-auto">
+                  <h5 class="text-center">Real Costs</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6">Initial Costs</p>
+                        <p class="col-md-3">
+                          {{ calculationService.investmentMin }}–{{
+                            calculationService.investmentMax
+                          }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Maintenance Costs</p>
+                        <p class="col-md-3">
+                          {{ calculationService.maintenance }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Disposal Costs</p>
+                        <p class="col-md-3">
+                          {{ calculationService.disposal }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">Total</p>
+                        <p class="col-md-3">
+                          {{ calculationService.totalMin }}–{{
+                            calculationService.totalMax
+                          }}
+                        </p>
+                        <p class="col-md-3">€</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </ng-template>
           </li>
         </ul>
