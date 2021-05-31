@@ -14,6 +14,7 @@ import { VerticalGardenComponent } from './vertical-garden/vertical-garden.compo
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

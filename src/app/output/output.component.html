@@ -73,7 +73,13 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="row">
-                        <p class="col-md-6">NO<sub>2</sub></p>
+                        <p class="col-md-6">
+                          NO<sub>2</sub>
+                          <fa-icon
+                            class="ml-2"
+                            [icon]="faQuestionCircle"
+                          ></fa-icon>
+                        </p>
                         <p class="col-md-3">
                           {{ data.NO2_MIN }}–{{ data.NO2_MAX }}
                         </p>

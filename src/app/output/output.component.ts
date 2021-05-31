@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppData } from '../app.data';
 import { CalculationService } from '../calculation.service';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-output',
@@ -9,6 +10,7 @@ import { CalculationService } from '../calculation.service';
   styleUrls: ['./output.component.css'],
 })
 export class OutputComponent implements OnInit {
+  faQuestionCircle = faQuestionCircle;
   method: string;
   precipitation: number;
   lifespan: number;
