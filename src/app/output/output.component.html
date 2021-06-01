@@ -440,9 +440,16 @@
                   <table class="table table-striped text-center">
                     <thead>
                       <tr>
-                        <th>#</th>
+                        <th></th>
                         <th colspan="2">Saved Costs</th>
                         <th colspan="2">Real Costs</th>
+                        <th colspan="1">Discount Factor</th>
+                        <th colspan="2">Discounted Cashflow</th>
+                        <th colspan="2">NPV</th>
+                        <th colspan="2">Discounted Saved Costs</th>
+                        <th colspan="2">Discounted Real Costs</th>
+                        <th colspan="2">Cumulative Discounted Cashflow</th>
+                        <th colspan="2">Cumulative Discounted NPV</th>
                       </tr>
                       <tr>
                         <th>#</th>
@@ -450,24 +457,37 @@
                         <th>Best Case</th>
                         <th>Worst Case</th>
                         <th>Best Case</th>
+                        <th></th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let country of countries; index as i">
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>
-                          <img
-                            [src]="
-                              'https://upload.wikimedia.org/wikipedia/commons/' +
-                              country.flag
-                            "
-                            class="mr-2"
-                            style="width: 20px"
-                          />
-                          {{ country.name }}
-                        </td>
-                        <td>{{ country.area | number }}</td>
-                        <td>{{ country.population | number }}</td>
+                      <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>{{ data.INVESTMENT_MIN }}</td>
+                        <td>{{ data.INVESTMENT_MAX }}</td>
+                        <td>1</td>
+                      </tr>
+                      <tr *ngFor="let row of rows; index as i">
+                        <td>{{ row.year }}</td>
+                        <td>{{ row.savedCostsWorst | number }}</td>
+                        <td>{{ row.savedCostsBest | number }}</td>
+                        <td>{{ row.realCostsWorst | number }}</td>
+                        <td>{{ row.realCostsBest | number }}</td>
+                        <td>{{ row.discountFactor | number }}</td>
                       </tr>
                     </tbody>
                   </table>
