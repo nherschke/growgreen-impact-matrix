@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppData } from '../app.data';
 import { CalculationService } from '../calculation.service';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-output',
@@ -17,10 +18,13 @@ export class OutputComponent implements OnInit {
   wallSize: number;
   investment: number;
 
+  discountButtonsForm: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private data: AppData,
-    private calculationService: CalculationService
+    private calculationService: CalculationService,
+    private formBuilder: FormBuilder
   ) {
     this.precipitation = calculationService.precipitation;
     this.lifespan = calculationService.lifespan;
@@ -39,6 +43,10 @@ export class OutputComponent implements OnInit {
     if (this.method === 'investment') {
       this.calculationService.calculateWithInvestment();
     }
+
+    this.discountButtonsForm = this.formBuilder.group({
+      discountRate: '0',
+    });
   }
 
   active = 1;
