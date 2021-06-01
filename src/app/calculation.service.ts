@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AppData } from './app.data';
 
