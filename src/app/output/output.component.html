@@ -276,8 +276,8 @@
                       <div class="row">
                         <p class="col-md-6">Initial Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.investmentMin }}–{{
-                            calculationService.investmentMax
+                          {{ calculationService.investmentMin | number }}–{{
+                            calculationService.investmentMax | number
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -285,22 +285,22 @@
                       <div class="row">
                         <p class="col-md-6">Maintenance Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.maintenance }}
+                          {{ calculationService.maintenance | number }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Disposal Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.disposal }}
+                          {{ calculationService.disposal | number }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Total</p>
                         <p class="col-md-3">
-                          {{ calculationService.totalMin }}–{{
-                            calculationService.totalMax
+                          {{ calculationService.totalMin | number }}–{{
+                            calculationService.totalMax | number
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -319,15 +319,15 @@
                       <div class="row">
                         <p class="col-md-6">Air Quality</p>
                         <p class="col-md-3">
-                          {{ calculationService.airQualityCB }}
+                          {{ calculationService.airQualityCB | number }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Stormwater Management</p>
                         <p class="col-md-3">
-                          {{ calculationService.smReductionMin }}–{{
-                            calculationService.smReductionMax
+                          {{ calculationService.smReductionMin | number }}–{{
+                            calculationService.smReductionMax | number
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -335,8 +335,10 @@
                       <div class="row">
                         <p class="col-md-6">Energy Reduction</p>
                         <p class="col-md-3">
-                          {{ calculationService.energyReductionMin }}–{{
-                            calculationService.energyReductionMax
+                          {{
+                            calculationService.energyReductionMin | number
+                          }}–{{
+                            calculationService.energyReductionMax | number
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -351,14 +353,14 @@
                       <div class="row">
                         <p class="col-md-6">Wall Longevity</p>
                         <p class="col-md-3">
-                          {{ calculationService.wallLongevity }}
+                          {{ calculationService.wallLongevity | number }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Raised Property Value</p>
                         <p class="col-md-3">
-                          {{ calculationService.propertyValue }}
+                          {{ calculationService.propertyValue | number }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
@@ -374,8 +376,10 @@
                       <div class="row">
                         <p class="col-md-6">Total</p>
                         <p class="col-md-3">
-                          {{ calculationService.totalCostBenefitsMin }}–{{
-                            calculationService.totalCostBenefitsMax
+                          {{
+                            calculationService.totalCostBenefitsMin | number
+                          }}–{{
+                            calculationService.totalCostBenefitsMax | number
                           }}
                         </p>
                         <p class="col-md-3">€</p>
