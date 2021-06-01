@@ -319,7 +319,9 @@
                       <div class="row">
                         <p class="col-md-6">Air Quality</p>
                         <p class="col-md-3">
-                          {{ calculationService.airQualityCB | number }}
+                          {{ calculationService.airQualityMin | number }}–{{
+                            calculationService.airQualityMax | number
+                          }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>

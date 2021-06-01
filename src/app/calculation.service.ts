@@ -29,7 +29,8 @@ export class CalculationService {
   totalMin: number;
   totalMax: number;
 
-  airQualityCB: number;
+  airQualityMin: number;
+  airQualityMax: number;
   smReductionMin: number;
   smReductionMax: number;
   energyReductionMin: number;
@@ -95,8 +96,10 @@ export class CalculationService {
     this.totalMax = this.investmentMax + this.maintenance + this.disposal;
 
     // Environmental Impact
-    this.airQualityCB =
-      wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION;
+    this.airQualityMin =
+      wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION_MIN;
+    this.airQualityMax =
+      wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION_MAX;
 
     this.smReductionMin =
       wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MIN;
@@ -115,13 +118,13 @@ export class CalculationService {
 
     // Total Cost Benefits
     this.totalCostBenefitsMin =
-      this.airQualityCB +
+      this.airQualityMin +
       this.smReductionMin +
       this.energyReductionMin +
       this.wallLongevity +
       this.propertyValue;
     this.totalCostBenefitsMax =
-      this.airQualityCB +
+      this.airQualityMax +
       this.smReductionMax +
       this.energyReductionMax +
       this.wallLongevity +
