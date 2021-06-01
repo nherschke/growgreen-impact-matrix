@@ -250,19 +250,7 @@
           <li [ngbNavItem]="2">
             <a ngbNavLink>Social</a>
             <ng-template ngbNavContent>
-              <p>
-                Exercitation +1 labore velit, blog sartorial PBR leggings next
-                level wes anderson artisan four loko farm-to-table craft beer
-                twee. Qui photo booth letterpress, commodo enim craft beer
-                mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo
-                nostrud organic, assumenda labore aesthetic magna delectus
-                mollit. Keytar helvetica VHS salvia yr, vero magna velit
-                sapiente labore stumptown. Vegan fanny pack odio cillum wes
-                anderson 8-bit, sustainable jean shorts beard ut DIY ethical
-                culpa terry richardson biodiesel. Art party scenester stumptown,
-                tumblr butcher vero sint qui sapiente accusamus tattooed echo
-                park.
-              </p>
+              <p>TBD</p>
             </ng-template>
           </li>
           <li [ngbNavItem]="3">
@@ -445,6 +433,44 @@
                       </label>
                     </div>
                   </form>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-12">
+                  <table class="table table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th colspan="2">Saved Costs</th>
+                        <th colspan="2">Real Costs</th>
+                      </tr>
+                      <tr>
+                        <th>#</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                        <th>Worst Case</th>
+                        <th>Best Case</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let country of countries; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>
+                          <img
+                            [src]="
+                              'https://upload.wikimedia.org/wikipedia/commons/' +
+                              country.flag
+                            "
+                            class="mr-2"
+                            style="width: 20px"
+                          />
+                          {{ country.name }}
+                        </td>
+                        <td>{{ country.area | number }}</td>
+                        <td>{{ country.population | number }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </ng-template>
