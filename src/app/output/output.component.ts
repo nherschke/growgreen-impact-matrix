@@ -106,9 +106,9 @@ export class OutputComponent implements OnInit {
           let scw =
             (this.data.AIR_QUALITY_MONETIZATION_MIN +
               this.data.WATER_RETENTION_MIN +
-              this.data.ENERGY_COST_REDUCTION_MIN +
-              //this.data.MEMBRANE_LONGEVITY_COST +
-              this.data.PROPERTY_VALUE) /
+              this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
+              //this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+              this.data.PROPERTY_VALUE_MONETIZATION) /
             year;
 
           this.rows.push({

@@ -102,19 +102,20 @@ export class CalculationService {
       wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION_MAX;
 
     this.smReductionMin =
-      wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MIN;
+      wallSize * this.lifespan * this.data.WATER_RETENTION_MONETIZATION_MIN;
     this.smReductionMax =
-      wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MAX;
+      wallSize * this.lifespan * this.data.WATER_RETENTION_MONETIZATION_MAX;
 
     this.energyReductionMin =
-      wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MIN;
+      wallSize * this.lifespan * this.data.ENERGY_REDUCTION_MONETIZATION_MIN;
     this.energyReductionMax =
-      wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MAX;
+      wallSize * this.lifespan * this.data.ENERGY_REDUCTION_MONETIZATION_MAX;
 
     // Economic Cost Benefits
     this.wallLongevity =
-      wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_COST;
-    this.propertyValue = wallSize * this.lifespan * this.data.PROPERTY_VALUE;
+      wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_MONETIZATION;
+    this.propertyValue =
+      wallSize * this.lifespan * this.data.PROPERTY_VALUE_MONETIZATION;
 
     // Total Cost Benefits
     this.totalCostBenefitsMin =
