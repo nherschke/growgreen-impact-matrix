@@ -64,34 +64,54 @@ export class CalculationService {
 
     this.calculateRetention();
 
-    // ECONOMIC TAB
+    this.calculateCosts(this.wallSize);
+  }
+
+  calculateWithInvestment() {
+    this.wallSizeMin = this.investment / this.data.INVESTMENT_MAX;
+    this.wallSizeMax = this.investment / this.data.INVESTMENT_MIN;
+    let wallSizeAvg = (this.wallSizeMin + this.wallSizeMax) / 2;
+
+    this.co2min = wallSizeAvg * this.lifespan * this.data.CO2_SEQUESTRATION_MIN;
+    this.co2max = wallSizeAvg * this.lifespan * this.data.CO2_SEQUESTRATION_MAX;
+
+    this.calculateRetention();
+
+    this.calculateCosts(wallSizeAvg);
+  }
+
+  calculateRetention() {
+    this.retentionMin = this.data.WATER_RETENTION_MIN * this.precipitation;
+    this.retentionMax = this.data.WATER_RETENTION_MAX * this.precipitation;
+  }
+
+  calculateCosts(wallSize: number) {
     // Real Costs
-    this.investmentMin = this.wallSize * this.data.INVESTMENT_MIN;
-    this.investmentMax = this.wallSize * this.data.INVESTMENT_MAX;
-    this.maintenance = this.wallSize * this.data.MAINTENANCE;
-    this.disposal = this.wallSize * this.data.DISPOSAL;
+    this.investmentMin = wallSize * this.data.INVESTMENT_MIN;
+    this.investmentMax = wallSize * this.data.INVESTMENT_MAX;
+    this.maintenance = wallSize * this.data.MAINTENANCE;
+    this.disposal = wallSize * this.data.DISPOSAL;
     this.totalMin = this.investmentMin + this.maintenance + this.disposal;
     this.totalMax = this.investmentMax + this.maintenance + this.disposal;
 
     // Environmental Impact
     this.airQualityCB =
-      this.wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION;
+      wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION;
 
     this.smReductionMin =
-      this.wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MIN;
+      wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MIN;
     this.smReductionMax =
-      this.wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MAX;
+      wallSize * this.lifespan * this.data.RUNOFF_COST_REDUCTION_MAX;
 
     this.energyReductionMin =
-      this.wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MIN;
+      wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MIN;
     this.energyReductionMax =
-      this.wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MAX;
+      wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MAX;
 
     // Economic Cost Benefits
     this.wallLongevity =
-      this.wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_COST;
-    this.propertyValue =
-      this.wallSize * this.lifespan * this.data.PROPERTY_VALUE;
+      wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_COST;
+    this.propertyValue = wallSize * this.lifespan * this.data.PROPERTY_VALUE;
 
     // Total Cost Benefits
     this.totalCostBenefitsMin =
@@ -106,26 +126,5 @@ export class CalculationService {
       this.energyReductionMax +
       this.wallLongevity +
       this.propertyValue;
-  }
-
-  calculateWithInvestment() {
-    this.wallSizeMin = this.investment / this.data.INVESTMENT_MAX;
-    this.wallSizeMax = this.investment / this.data.INVESTMENT_MIN;
-
-    this.co2min =
-      ((this.wallSizeMin + this.wallSizeMax) / 2) *
-      this.lifespan *
-      this.data.CO2_SEQUESTRATION_MIN;
-    this.co2max =
-      ((this.wallSizeMin + this.wallSizeMax) / 2) *
-      this.lifespan *
-      this.data.CO2_SEQUESTRATION_MAX;
-
-    this.calculateRetention();
-  }
-
-  calculateRetention() {
-    this.retentionMin = this.data.WATER_RETENTION_MIN * this.precipitation;
-    this.retentionMax = this.data.WATER_RETENTION_MAX * this.precipitation;
   }
 }
