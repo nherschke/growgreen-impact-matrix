@@ -56,6 +56,7 @@ export class CalculationService {
   }
 
   calculateWithWallSize() {
+    // Environmental tab
     this.co2min =
       this.wallSize * this.lifespan * this.data.CO2_SEQUESTRATION_MIN;
     this.co2max =
@@ -63,6 +64,8 @@ export class CalculationService {
 
     this.calculateRetention();
 
+    // ECONOMIC TAB
+    // Real Costs
     this.investmentMin = this.wallSize * this.data.INVESTMENT_MIN;
     this.investmentMax = this.wallSize * this.data.INVESTMENT_MAX;
     this.maintenance = this.wallSize * this.data.MAINTENANCE;
@@ -70,6 +73,7 @@ export class CalculationService {
     this.totalMin = this.investmentMin + this.maintenance + this.disposal;
     this.totalMax = this.investmentMax + this.maintenance + this.disposal;
 
+    // Environmental Impact
     this.airQualityCB =
       this.wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION;
 
@@ -83,11 +87,13 @@ export class CalculationService {
     this.energyReductionMax =
       this.wallSize * this.lifespan * this.data.ENERGY_COST_REDUCTION_MAX;
 
+    // Economic Cost Benefits
     this.wallLongevity =
       this.wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_COST;
     this.propertyValue =
       this.wallSize * this.lifespan * this.data.PROPERTY_VALUE;
 
+    // Total Cost Benefits
     this.totalCostBenefitsMin =
       this.airQualityCB +
       this.smReductionMin +
