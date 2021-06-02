@@ -22,32 +22,9 @@ interface Row {
   dcRealCostsBest: number;
   cumDcCashflowWorst: number;
   cumDcCashflowBest: number;
-  cumDcNPVWorst: number;
-  cumDcNPVBest: number;
+  cumNPVWorst: number;
+  cumNPVBest: number;
 }
-
-const ROWS: Row[] = [
-  {
-    year: 1,
-    savedCostsWorst: 231,
-    savedCostsBest: 355,
-    realCostsWorst: 3000,
-    realCostsBest: 2000,
-    discountFactor: 0.01,
-    dcCashflowWorst: 339,
-    dcCashflowBest: 234,
-    npvWorst: 2,
-    npvBest: 32,
-    dcSavedCostsWorst: 234,
-    dcSavedCostsBest: 234,
-    dcRealCostsWorst: 231,
-    dcRealCostsBest: 234,
-    cumDcCashflowWorst: 234,
-    cumDcCashflowBest: 2355,
-    cumDcNPVWorst: 22,
-    cumDcNPVBest: 23,
-  },
-];
 
 @Component({
   selector: 'app-output',
@@ -100,47 +77,121 @@ export class OutputComponent implements OnInit {
         this.rows = [];
 
         let discountRate: number = +value / 100;
+        let year: number;
+        let scw: number;
+        let scb: number;
+        let rcW: number;
+        let rcB: number;
+        let dcf: number;
+        let dcCfW: number;
+        let dcCfB: number;
+        let npvW: number;
+        let npvB: number;
+        let dcScW: number;
+        let dcScB: number;
+        let dcRcW: number;
+        let dcRcB: number;
+        let cDcCfW: number = 0;
+        let cDcCfB: number = 0;
+        let cNpvW: number = 0;
+        let cNpvB: number = 0;
 
-        for (let i = 0; i < this.lifespan; i++) {
-          let year: number = i + 1;
-          let scw: number =
-            (this.data.AIR_QUALITY_MONETIZATION_MIN +
-              this.data.WATER_RETENTION_MIN +
-              this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
-              //this.data.MEMBRANE_LONGEVITY_MONETIZATION +
-              this.data.PROPERTY_VALUE_MONETIZATION) /
-            year;
-          let scb: number =
-            (this.data.AIR_QUALITY_MONETIZATION_MAX +
-              this.data.WATER_RETENTION_MAX +
-              this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
-              //this.data.MEMBRANE_LONGEVITY_MONETIZATION +
-              this.data.PROPERTY_VALUE_MONETIZATION) /
-            year;
-          let rc: number = this.data.MAINTENANCE;
-          let dcf: number = 1 / (1 + discountRate) ** year;
-          let dcCfW: number = (scw - rc) * dcf;
-          let dcCfB: number = (scb - rc) * dcf;
+        // Fill the table
+        for (let i = 0; i <= this.lifespan; i++) {
+          year = i;
+
+          // Saved Costs
+          if (year === 0) {
+            scw = 0;
+            scb = 0;
+          } else if (this.lifespan === 50 && year === 50) {
+            scw =
+              (this.data.AIR_QUALITY_MONETIZATION_MIN +
+                this.data.WATER_RETENTION_MIN +
+                this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
+                this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+                this.data.PROPERTY_VALUE_MONETIZATION) /
+              year;
+            scb =
+              (this.data.AIR_QUALITY_MONETIZATION_MAX +
+                this.data.WATER_RETENTION_MAX +
+                this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
+                this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+                this.data.PROPERTY_VALUE_MONETIZATION) /
+              year;
+          } else {
+            scw =
+              (this.data.AIR_QUALITY_MONETIZATION_MIN +
+                this.data.WATER_RETENTION_MIN +
+                this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
+                this.data.PROPERTY_VALUE_MONETIZATION) /
+              year;
+            scb =
+              (this.data.AIR_QUALITY_MONETIZATION_MAX +
+                this.data.WATER_RETENTION_MAX +
+                this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
+                this.data.PROPERTY_VALUE_MONETIZATION) /
+              year;
+          }
+
+          // Real Costs
+          if (year === 0) {
+            rcW = this.data.INVESTMENT_MIN;
+            rcB = this.data.INVESTMENT_MAX;
+          } else if (year === this.lifespan) {
+            rcW = this.data.MAINTENANCE / this.lifespan + this.data.DISPOSAL;
+            rcB = this.data.MAINTENANCE / this.lifespan + this.data.DISPOSAL;
+          } else {
+            rcW = this.data.MAINTENANCE;
+            rcB = this.data.MAINTENANCE;
+          }
+
+          // Discount Factor
+          dcf = 1 / (1 + discountRate) ** year;
+
+          // Discounted Cashflow
+          dcCfW = (scw - rcW) * dcf;
+          dcCfB = (scb - rcB) * dcf;
+
+          // NPV
+          npvW = dcCfW / (1 + dcf) ** year;
+          npvB = dcCfB / (1 + dcf) ** year;
+
+          // Discounted Saved Costs
+          dcScW = scw * dcf;
+          dcScB = scb * dcf;
+
+          // Discounted Real Costs
+          dcRcW = rcW * dcf;
+          dcRcB = rcB * dcf;
+
+          // Cumulative Discounted Cashflow
+          cDcCfW += dcCfW;
+          cDcCfB += dcCfB;
+
+          // Cumulative NPV
+          cNpvW += npvW;
+          cNpvB += npvB;
 
           this.rows.push({
             year: year,
             savedCostsWorst: scw,
             savedCostsBest: scb,
-            realCostsWorst: rc,
-            realCostsBest: rc,
+            realCostsWorst: rcW,
+            realCostsBest: rcB,
             discountFactor: dcf,
             dcCashflowWorst: dcCfW,
             dcCashflowBest: dcCfB,
-            npvWorst: 2,
-            npvBest: 32,
-            dcSavedCostsWorst: 234,
-            dcSavedCostsBest: 234,
-            dcRealCostsWorst: 231,
-            dcRealCostsBest: 234,
-            cumDcCashflowWorst: 234,
-            cumDcCashflowBest: 2355,
-            cumDcNPVWorst: 22,
-            cumDcNPVBest: 23,
+            npvWorst: npvW,
+            npvBest: npvB,
+            dcSavedCostsWorst: dcScW,
+            dcSavedCostsBest: dcScB,
+            dcRealCostsWorst: dcRcW,
+            dcRealCostsBest: dcRcB,
+            cumDcCashflowWorst: cDcCfW,
+            cumDcCashflowBest: cDcCfB,
+            cumNPVWorst: cNpvW,
+            cumNPVBest: cNpvB,
           });
         }
       });
