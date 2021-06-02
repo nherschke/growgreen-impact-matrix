@@ -49,8 +49,8 @@
         <div class="row">
           <p class="col-md-2">Estimated Wall Size</p>
           <p class="col-md-2">
-            {{ calculationService.wallSizeMin | number }}–{{
-              calculationService.wallSizeMax | number
+            {{ calculationService.wallSizeMin | number: "1.0-2" }}–{{
+              calculationService.wallSizeMax | number: "1.0-2"
             }}
             m<sup>2</sup>
           </p>
@@ -130,8 +130,8 @@
                           ></fa-icon>
                         </p>
                         <p class="col-md-3">
-                          {{ calculationService.co2min | number }}–{{
-                            calculationService.co2max | number
+                          {{ calculationService.co2min | number: "1.0-2" }}–{{
+                            calculationService.co2max | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">g/{{ lifespan }} year(s)</p>
@@ -196,8 +196,10 @@
                       <div class="row">
                         <p class="col-md-6">Retained Water</p>
                         <p class="col-md-3">
-                          {{ calculationService.retentionMin | number }}–{{
-                            calculationService.retentionMax | number
+                          {{
+                            calculationService.retentionMin | number: "1.0-2"
+                          }}–{{
+                            calculationService.retentionMax | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">mm/day</p>
@@ -264,8 +266,10 @@
                       <div class="row">
                         <p class="col-md-6">Initial Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.investmentMin | number }}–{{
-                            calculationService.investmentMax | number
+                          {{
+                            calculationService.investmentMin | number: "1.0-2"
+                          }}–{{
+                            calculationService.investmentMax | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -273,22 +277,22 @@
                       <div class="row">
                         <p class="col-md-6">Maintenance Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.maintenance | number }}
+                          {{ calculationService.maintenance | number: "1.0-2" }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Disposal Costs</p>
                         <p class="col-md-3">
-                          {{ calculationService.disposal | number }}
+                          {{ calculationService.disposal | number: "1.0-2" }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Total</p>
                         <p class="col-md-3">
-                          {{ calculationService.totalMin | number }}–{{
-                            calculationService.totalMax | number
+                          {{ calculationService.totalMin | number: "1.0-2" }}–{{
+                            calculationService.totalMax | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -307,8 +311,10 @@
                       <div class="row">
                         <p class="col-md-6">Air Quality</p>
                         <p class="col-md-3">
-                          {{ calculationService.airQualityMin | number }}–{{
-                            calculationService.airQualityMax | number
+                          {{
+                            calculationService.airQualityMin | number: "1.0-2"
+                          }}–{{
+                            calculationService.airQualityMax | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -316,8 +322,10 @@
                       <div class="row">
                         <p class="col-md-6">Stormwater Management</p>
                         <p class="col-md-3">
-                          {{ calculationService.smReductionMin | number }}–{{
-                            calculationService.smReductionMax | number
+                          {{
+                            calculationService.smReductionMin | number: "1.0-2"
+                          }}–{{
+                            calculationService.smReductionMax | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -326,9 +334,11 @@
                         <p class="col-md-6">Energy Reduction</p>
                         <p class="col-md-3">
                           {{
-                            calculationService.energyReductionMin | number
+                            calculationService.energyReductionMin
+                              | number: "1.0-2"
                           }}–{{
-                            calculationService.energyReductionMax | number
+                            calculationService.energyReductionMax
+                              | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -343,14 +353,18 @@
                       <div class="row">
                         <p class="col-md-6">Wall Longevity</p>
                         <p class="col-md-3">
-                          {{ calculationService.wallLongevity | number }}
+                          {{
+                            calculationService.wallLongevity | number: "1.0-2"
+                          }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">Raised Property Value</p>
                         <p class="col-md-3">
-                          {{ calculationService.propertyValue | number }}
+                          {{
+                            calculationService.propertyValue | number: "1.0-2"
+                          }}
                         </p>
                         <p class="col-md-3">€</p>
                       </div>
@@ -367,9 +381,11 @@
                         <p class="col-md-6">Total</p>
                         <p class="col-md-3">
                           {{
-                            calculationService.totalCostBenefitsMin | number
+                            calculationService.totalCostBenefitsMin
+                              | number: "1.0-2"
                           }}–{{
-                            calculationService.totalCostBenefitsMax | number
+                            calculationService.totalCostBenefitsMax
+                              | number: "1.0-2"
                           }}
                         </p>
                         <p class="col-md-3">€</p>
@@ -439,6 +455,16 @@
                 *ngIf="discountButtonsForm.get('discountRate').value !== null"
                 class="row mt-4"
               >
+                <div class="col-md-8 mx-auto">
+                  <div class="row text-center">
+                    <h5>Cost Benefit Analysis</h5>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="discountButtonsForm.get('discountRate').value !== null"
+                class="row mt-4"
+              >
                 <div class="col-md-12">
                   <table
                     class="
@@ -483,23 +509,23 @@
                     <tbody>
                       <tr *ngFor="let row of rows; index as i">
                         <td>{{ row.year }}</td>
-                        <td>{{ row.savedCostsWorst | number }}</td>
-                        <td>{{ row.savedCostsBest | number }}</td>
-                        <td>{{ row.realCostsWorst | number }}</td>
-                        <td>{{ row.realCostsBest | number }}</td>
-                        <td>{{ row.discountFactor | number }}</td>
-                        <td>{{ row.dcCashflowWorst | number }}</td>
-                        <td>{{ row.dcCashflowBest | number }}</td>
-                        <td>{{ row.npvWorst | number }}</td>
-                        <td>{{ row.npvBest | number }}</td>
-                        <td>{{ row.dcSavedCostsWorst | number }}</td>
-                        <td>{{ row.dcSavedCostsBest | number }}</td>
-                        <td>{{ row.dcRealCostsWorst | number }}</td>
-                        <td>{{ row.dcRealCostsBest | number }}</td>
-                        <td>{{ row.cumDcCashflowWorst | number }}</td>
-                        <td>{{ row.cumDcCashflowBest | number }}</td>
-                        <td>{{ row.cumNPVWorst | number }}</td>
-                        <td>{{ row.cumNPVBest | number }}</td>
+                        <td>{{ row.savedCostsWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.savedCostsBest | number: "1.0-2" }}</td>
+                        <td>{{ row.realCostsWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.realCostsBest | number: "1.0-2" }}</td>
+                        <td>{{ row.discountFactor | number: "1.0-2" }}</td>
+                        <td>{{ row.dcCashflowWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.dcCashflowBest | number: "1.0-2" }}</td>
+                        <td>{{ row.npvWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.npvBest | number: "1.0-2" }}</td>
+                        <td>{{ row.dcSavedCostsWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.dcSavedCostsBest | number: "1.0-2" }}</td>
+                        <td>{{ row.dcRealCostsWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.dcRealCostsBest | number: "1.0-2" }}</td>
+                        <td>{{ row.cumDcCashflowWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.cumDcCashflowBest | number: "1.0-2" }}</td>
+                        <td>{{ row.cumNPVWorst | number: "1.0-2" }}</td>
+                        <td>{{ row.cumNPVBest | number: "1.0-2" }}</td>
                       </tr>
                     </tbody>
                   </table>
