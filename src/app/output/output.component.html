@@ -435,7 +435,10 @@
                   </form>
                 </div>
               </div>
-              <div class="row mt-4">
+              <div
+                *ngIf="discountButtonsForm.get('discountRate').value !== null"
+                class="row mt-4"
+              >
                 <div class="col-md-12">
                   <table class="table table-striped text-center">
                     <thead>
@@ -488,6 +491,8 @@
                         <td>{{ row.realCostsWorst | number }}</td>
                         <td>{{ row.realCostsBest | number }}</td>
                         <td>{{ row.discountFactor | number }}</td>
+                        <td>{{ row.dcCashflowWorst | number }}</td>
+                        <td>{{ row.dcCashflowBest | number }}</td>
                       </tr>
                     </tbody>
                   </table>
