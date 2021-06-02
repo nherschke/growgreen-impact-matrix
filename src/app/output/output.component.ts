@@ -107,29 +107,37 @@ export class OutputComponent implements OnInit {
           } else if (this.lifespan === 50 && year === 50) {
             scw =
               (this.data.AIR_QUALITY_MONETIZATION_MIN +
-                this.data.WATER_RETENTION_MIN +
+                this.data.CO2_SEQUESTRATION_MONETIZATION_MIN +
+                this.data.WATER_RETENTION_MONETIZATION_MIN +
                 this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
                 this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+                this.data.BIOMASS_PRODUCTION_MONETIZATION +
                 this.data.PROPERTY_VALUE_MONETIZATION) /
               year;
             scb =
               (this.data.AIR_QUALITY_MONETIZATION_MAX +
-                this.data.WATER_RETENTION_MAX +
+                this.data.CO2_SEQUESTRATION_MONETIZATION_MAX +
+                this.data.WATER_RETENTION_MONETIZATION_MAX +
                 this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
                 this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+                this.data.BIOMASS_PRODUCTION_MONETIZATION +
                 this.data.PROPERTY_VALUE_MONETIZATION) /
               year;
           } else {
             scw =
               (this.data.AIR_QUALITY_MONETIZATION_MIN +
-                this.data.WATER_RETENTION_MIN +
+                this.data.CO2_SEQUESTRATION_MONETIZATION_MIN +
+                this.data.WATER_RETENTION_MONETIZATION_MIN +
                 this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
+                this.data.BIOMASS_PRODUCTION_MONETIZATION +
                 this.data.PROPERTY_VALUE_MONETIZATION) /
               year;
             scb =
               (this.data.AIR_QUALITY_MONETIZATION_MAX +
-                this.data.WATER_RETENTION_MAX +
+                this.data.CO2_SEQUESTRATION_MONETIZATION_MAX +
+                this.data.WATER_RETENTION_MONETIZATION_MAX +
                 this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
+                this.data.BIOMASS_PRODUCTION_MONETIZATION +
                 this.data.PROPERTY_VALUE_MONETIZATION) /
               year;
           }
