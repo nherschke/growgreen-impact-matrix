@@ -440,7 +440,12 @@
                 class="row mt-4"
               >
                 <div class="col-md-12">
-                  <table class="table table-striped text-center">
+                  <table
+                    class="
+                      table table-sm table-bordered table-hover
+                      text-center
+                    "
+                  >
                     <thead>
                       <tr>
                         <th>Year</th>
@@ -452,7 +457,7 @@
                         <th colspan="2">Discounted Saved Costs</th>
                         <th colspan="2">Discounted Real Costs</th>
                         <th colspan="2">Cumulative Discounted Cashflow</th>
-                        <th colspan="2">Cumulative Discounted NPV</th>
+                        <th colspan="2">Cumulative NPV</th>
                       </tr>
                       <tr>
                         <th>#</th>
@@ -476,14 +481,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>{{ data.INVESTMENT_MIN }}</td>
-                        <td>{{ data.INVESTMENT_MAX }}</td>
-                        <td>1</td>
-                      </tr>
                       <tr *ngFor="let row of rows; index as i">
                         <td>{{ row.year }}</td>
                         <td>{{ row.savedCostsWorst | number }}</td>
@@ -493,6 +490,16 @@
                         <td>{{ row.discountFactor | number }}</td>
                         <td>{{ row.dcCashflowWorst | number }}</td>
                         <td>{{ row.dcCashflowBest | number }}</td>
+                        <td>{{ row.npvWorst | number }}</td>
+                        <td>{{ row.npvBest | number }}</td>
+                        <td>{{ row.dcSavedCostsWorst | number }}</td>
+                        <td>{{ row.dcSavedCostsBest | number }}</td>
+                        <td>{{ row.dcRealCostsWorst | number }}</td>
+                        <td>{{ row.dcRealCostsBest | number }}</td>
+                        <td>{{ row.cumDcCashflowWorst | number }}</td>
+                        <td>{{ row.cumDcCashflowBest | number }}</td>
+                        <td>{{ row.cumNPVWorst | number }}</td>
+                        <td>{{ row.cumNPVBest | number }}</td>
                       </tr>
                     </tbody>
                   </table>
