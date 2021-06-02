@@ -91,7 +91,7 @@ export class OutputComponent implements OnInit {
     }
 
     this.discountButtonsForm = this.formBuilder.group({
-      discountRate: '0',
+      discountRate: null,
     });
 
     this.discountButtonsForm
@@ -99,27 +99,38 @@ export class OutputComponent implements OnInit {
       .valueChanges.subscribe((value) => {
         this.rows = [];
 
-        let discountRate: number = +value;
+        let discountRate: number = +value / 100;
 
-        for (let i = 0; i < 50; i++) {
-          let year = i + 1;
-          let scw =
+        for (let i = 0; i < this.lifespan; i++) {
+          let year: number = i + 1;
+          let scw: number =
             (this.data.AIR_QUALITY_MONETIZATION_MIN +
               this.data.WATER_RETENTION_MIN +
               this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
               //this.data.MEMBRANE_LONGEVITY_MONETIZATION +
               this.data.PROPERTY_VALUE_MONETIZATION) /
             year;
+          let scb: number =
+            (this.data.AIR_QUALITY_MONETIZATION_MAX +
+              this.data.WATER_RETENTION_MAX +
+              this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
+              //this.data.MEMBRANE_LONGEVITY_MONETIZATION +
+              this.data.PROPERTY_VALUE_MONETIZATION) /
+            year;
+          let rc: number = this.data.MAINTENANCE;
+          let dcf: number = 1 / (1 + discountRate) ** year;
+          let dcCfW: number = (scw - rc) * dcf;
+          let dcCfB: number = (scb - rc) * dcf;
 
           this.rows.push({
             year: year,
             savedCostsWorst: scw,
-            savedCostsBest: 355,
-            realCostsWorst: 3000,
-            realCostsBest: 2000,
-            discountFactor: discountRate,
-            dcCashflowWorst: 339,
-            dcCashflowBest: 234,
+            savedCostsBest: scb,
+            realCostsWorst: rc,
+            realCostsBest: rc,
+            discountFactor: dcf,
+            dcCashflowWorst: dcCfW,
+            dcCashflowBest: dcCfB,
             npvWorst: 2,
             npvBest: 32,
             dcSavedCostsWorst: 234,
