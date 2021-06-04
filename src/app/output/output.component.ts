@@ -43,6 +43,13 @@ export class OutputComponent implements OnInit {
 
   rows: Row[] = [];
 
+  cbNpvWorst: number = 0;
+  cbNpvBest: number = 0;
+  roiRatioWorst: number = 0;
+  roiRatioBest: number = 0;
+  roiRatioUndcWorst: number = 0;
+  roiRatioUndcBest: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private data: AppData,
@@ -75,6 +82,8 @@ export class OutputComponent implements OnInit {
       .get('discountRate')
       .valueChanges.subscribe((value) => {
         this.rows = [];
+        this.cbNpvWorst = 0;
+        this.cbNpvBest = 0;
 
         let discountRate: number = +value / 100;
         let year: number;
@@ -106,40 +115,15 @@ export class OutputComponent implements OnInit {
             scb = 0;
           } else if (this.lifespan === 50 && year === 50) {
             scw =
-              (this.data.AIR_QUALITY_MONETIZATION_MIN +
-                this.data.CO2_SEQUESTRATION_MONETIZATION_MIN +
-                this.data.WATER_RETENTION_MONETIZATION_MIN +
-                this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
-                this.data.MEMBRANE_LONGEVITY_MONETIZATION +
-                this.data.BIOMASS_PRODUCTION_MONETIZATION +
-                this.data.PROPERTY_VALUE_MONETIZATION) /
-              year;
+              this.data.TOTAL_BENEFITS_MIN +
+              this.data.MEMBRANE_LONGEVITY_MONETIZATION / year;
+            year;
             scb =
-              (this.data.AIR_QUALITY_MONETIZATION_MAX +
-                this.data.CO2_SEQUESTRATION_MONETIZATION_MAX +
-                this.data.WATER_RETENTION_MONETIZATION_MAX +
-                this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
-                this.data.MEMBRANE_LONGEVITY_MONETIZATION +
-                this.data.BIOMASS_PRODUCTION_MONETIZATION +
-                this.data.PROPERTY_VALUE_MONETIZATION) /
-              year;
+              this.data.TOTAL_BENEFITS_MAX +
+              this.data.MEMBRANE_LONGEVITY_MONETIZATION / year;
           } else {
-            scw =
-              (this.data.AIR_QUALITY_MONETIZATION_MIN +
-                this.data.CO2_SEQUESTRATION_MONETIZATION_MIN +
-                this.data.WATER_RETENTION_MONETIZATION_MIN +
-                this.data.ENERGY_REDUCTION_MONETIZATION_MIN +
-                this.data.BIOMASS_PRODUCTION_MONETIZATION +
-                this.data.PROPERTY_VALUE_MONETIZATION) /
-              year;
-            scb =
-              (this.data.AIR_QUALITY_MONETIZATION_MAX +
-                this.data.CO2_SEQUESTRATION_MONETIZATION_MAX +
-                this.data.WATER_RETENTION_MONETIZATION_MAX +
-                this.data.ENERGY_REDUCTION_MONETIZATION_MAX +
-                this.data.BIOMASS_PRODUCTION_MONETIZATION +
-                this.data.PROPERTY_VALUE_MONETIZATION) /
-              year;
+            scw = this.data.TOTAL_BENEFITS_MIN / year;
+            scb = this.data.TOTAL_BENEFITS_MAX / year;
           }
 
           // Real Costs
@@ -162,8 +146,8 @@ export class OutputComponent implements OnInit {
           dcCfB = (scb - rcB) * dcf;
 
           // NPV
-          npvW = dcCfW / (1 + dcf) ** year;
-          npvB = dcCfB / (1 + dcf) ** year;
+          npvW = dcCfW / (1 + discountRate) ** year;
+          npvB = dcCfB / (1 + discountRate) ** year;
 
           // Discounted Saved Costs
           dcScW = scw * dcf;
@@ -180,6 +164,10 @@ export class OutputComponent implements OnInit {
           // Cumulative NPV
           cNpvW += npvW;
           cNpvB += npvB;
+
+          // Cost-Benefit Analysis
+          this.cbNpvWorst += npvW;
+          this.cbNpvBest += npvB;
 
           this.rows.push({
             year: year,
@@ -202,6 +190,10 @@ export class OutputComponent implements OnInit {
             cumNPVBest: cNpvB,
           });
         }
+        console.log(dcf);
+
+        this.roiRatioWorst = dcf / this.data.INVESTMENT_MAX;
+        this.roiRatioBest = dcf / this.data.INVESTMENT_MIN;
       });
   }
 
