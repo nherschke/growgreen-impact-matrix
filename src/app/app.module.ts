@@ -15,6 +15,7 @@ import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DataComponent } from './data/data.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FutureComponent,
     VerticalGardenComponent,
     InputComponent,
-    OutputComponent
+    OutputComponent,
+    DataComponent
   ],
   imports: [
     BrowserModule,
