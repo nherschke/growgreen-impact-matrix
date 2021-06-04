@@ -49,6 +49,10 @@ export class OutputComponent implements OnInit {
   roiRatioBest: number = 0;
   roiRatioUndcWorst: number = 0;
   roiRatioUndcBest: number = 0;
+  bcRatioWorst: number = 0;
+  bcRatioBest: number = 0;
+  bcRatioUndcWorst: number = 0;
+  bcRatioUndcBest: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,10 +60,10 @@ export class OutputComponent implements OnInit {
     private calculationService: CalculationService,
     private formBuilder: FormBuilder
   ) {
-    this.precipitation = calculationService.precipitation;
-    this.lifespan = calculationService.lifespan;
-    this.wallSize = calculationService.wallSize;
-    this.investment = calculationService.investment;
+    this.precipitation = +calculationService.precipitation;
+    this.lifespan = +calculationService.lifespan;
+    this.wallSize = +calculationService.wallSize;
+    this.investment = +calculationService.investment;
   }
 
   ngOnInit(): void {
@@ -85,10 +89,13 @@ export class OutputComponent implements OnInit {
         this.cbNpvWorst = 0;
         this.cbNpvBest = 0;
 
+        this.bcRatioWorst = 0;
+        this.bcRatioBest = 0;
+
         let discountRate: number = +value / 100;
         let year: number;
-        let scw: number;
-        let scb: number;
+        let scW: number;
+        let scB: number;
         let rcW: number;
         let rcB: number;
         let dcf: number;
@@ -111,19 +118,19 @@ export class OutputComponent implements OnInit {
 
           // Saved Costs
           if (year === 0) {
-            scw = 0;
-            scb = 0;
-          } else if (this.lifespan === 50 && year === 50) {
-            scw =
+            scW = 0;
+            scB = 0;
+          } else if (year === 50) {
+            scW =
               this.data.TOTAL_BENEFITS_MIN +
-              this.data.MEMBRANE_LONGEVITY_MONETIZATION / year;
+              this.data.MEMBRANE_LONGEVITY_MONETIZATION / this.lifespan;
             year;
-            scb =
+            scB =
               this.data.TOTAL_BENEFITS_MAX +
-              this.data.MEMBRANE_LONGEVITY_MONETIZATION / year;
+              this.data.MEMBRANE_LONGEVITY_MONETIZATION / this.lifespan;
           } else {
-            scw = this.data.TOTAL_BENEFITS_MIN / year;
-            scb = this.data.TOTAL_BENEFITS_MAX / year;
+            scW = this.data.TOTAL_BENEFITS_MIN / this.lifespan;
+            scB = this.data.TOTAL_BENEFITS_MAX / this.lifespan;
           }
 
           // Real Costs
@@ -131,8 +138,8 @@ export class OutputComponent implements OnInit {
             rcW = this.data.INVESTMENT_MIN;
             rcB = this.data.INVESTMENT_MAX;
           } else if (year === this.lifespan) {
-            rcW = this.data.MAINTENANCE / this.lifespan + this.data.DISPOSAL;
-            rcB = this.data.MAINTENANCE / this.lifespan + this.data.DISPOSAL;
+            rcW = this.data.MAINTENANCE + this.data.DISPOSAL;
+            rcB = this.data.MAINTENANCE + this.data.DISPOSAL;
           } else {
             rcW = this.data.MAINTENANCE;
             rcB = this.data.MAINTENANCE;
@@ -142,16 +149,16 @@ export class OutputComponent implements OnInit {
           dcf = 1 / (1 + discountRate) ** year;
 
           // Discounted Cashflow
-          dcCfW = (scw - rcW) * dcf;
-          dcCfB = (scb - rcB) * dcf;
+          dcCfW = (scW - rcB) * dcf;
+          dcCfB = (scB - rcW) * dcf;
 
           // NPV
           npvW = dcCfW / (1 + discountRate) ** year;
           npvB = dcCfB / (1 + discountRate) ** year;
 
           // Discounted Saved Costs
-          dcScW = scw * dcf;
-          dcScB = scb * dcf;
+          dcScW = scW * dcf;
+          dcScB = scB * dcf;
 
           // Discounted Real Costs
           dcRcW = rcW * dcf;
@@ -171,8 +178,8 @@ export class OutputComponent implements OnInit {
 
           this.rows.push({
             year: year,
-            savedCostsWorst: scw,
-            savedCostsBest: scb,
+            savedCostsWorst: scW,
+            savedCostsBest: scB,
             realCostsWorst: rcW,
             realCostsBest: rcB,
             discountFactor: dcf,
@@ -190,10 +197,18 @@ export class OutputComponent implements OnInit {
             cumNPVBest: cNpvB,
           });
         }
-        console.log(dcf);
 
-        this.roiRatioWorst = dcf / this.data.INVESTMENT_MAX;
-        this.roiRatioBest = dcf / this.data.INVESTMENT_MIN;
+        this.roiRatioWorst = dcCfW / this.data.INVESTMENT_MAX;
+        this.roiRatioBest = dcCfB / this.data.INVESTMENT_MIN;
+
+        this.roiRatioUndcWorst = (scW - rcB) / this.data.INVESTMENT_MAX;
+        this.roiRatioUndcBest = (scB - rcW) / this.data.INVESTMENT_MIN;
+
+        this.bcRatioWorst = dcScW / dcRcB;
+        this.bcRatioBest = dcScB / dcRcW;
+
+        this.bcRatioUndcWorst = scW / rcB;
+        this.bcRatioUndcBest = scB / rcW;
       });
   }
 
