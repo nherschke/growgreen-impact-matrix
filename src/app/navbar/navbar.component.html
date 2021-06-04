@@ -2,13 +2,14 @@
   <a class="navbar-brand mr-auto" routerLink="/home">GrowGreen Impact Matrix</a>
   <ul class="navbar-nav">
     <li ngbDropdown class="nav-item">
-      <a class="nav-link" id="dropdown" ngbDropdownToggle routerLink="/nbs"
-        >NBS</a
-      >
+      <a class="nav-link" id="dropdown" ngbDropdownToggle>NBS</a>
       <div ngbDropdownMenu aria-labelledby="dropdown">
         <a ngbDropdownItem routerLink="/vertical-garden">Vertical Garden</a>
         <a ngbDropdownItem routerLink="/green-roof">Green Roof</a>
       </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/data">Data</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="/future">Future</a>
