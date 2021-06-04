@@ -1,3 +1,7 @@
 nav {
-    background-image: linear-gradient(to right, #099cb7, #5ab14b);
+  background-image: linear-gradient(to right, #099cb7, #5ab14b);
+}
+
+#dropdown:hover {
+  cursor: pointer;
 }
