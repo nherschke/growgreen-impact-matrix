@@ -250,12 +250,6 @@
             </ng-template>
           </li>
           <li [ngbNavItem]="2">
-            <a ngbNavLink>Social</a>
-            <ng-template ngbNavContent>
-              <p>TBD</p>
-            </ng-template>
-          </li>
-          <li [ngbNavItem]="3">
             <a ngbNavLink>Economic</a>
             <ng-template ngbNavContent>
               <div class="row mt-4">
@@ -476,26 +470,38 @@
                       <div class="row">
                         <p class="col-md-6">ROI Ratio</p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioWorst | number: "1.0-2" }}
+                          {{ roiRatioWorst | number: "1.0-5" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioBest | number: "1.0-2" }}
+                          {{ roiRatioBest | number: "1.0-5" }}
                         </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">ROI Ratio (undiscounted)</p>
-                        <p class="col-md-3 text-center">X</p>
-                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">
+                          {{ roiRatioUndcWorst | number: "1.0-5" }}
+                        </p>
+                        <p class="col-md-3 text-center">
+                          {{ roiRatioUndcBest | number: "1.0-5" }}
+                        </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">B/C Ratio</p>
-                        <p class="col-md-3 text-center">X</p>
-                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">
+                          {{ bcRatioWorst | number: "1.0-5" }}
+                        </p>
+                        <p class="col-md-3 text-center">
+                          {{ bcRatioBest | number: "1.0-5" }}
+                        </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">B/C Ratio (undiscounted)</p>
-                        <p class="col-md-3 text-center">X</p>
-                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">
+                          {{ bcRatioUndcWorst | number: "1.0-5" }}
+                        </p>
+                        <p class="col-md-3 text-center">
+                          {{ bcRatioUndcBest | number: "1.0-5" }}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -505,7 +511,7 @@
                 *ngIf="discountButtonsForm.get('discountRate').value !== null"
                 class="row mt-4"
               >
-                <div class="col-md-12">
+                <div class="col-md-12 mt-3">
                   <table
                     class="
                       table table-sm table-bordered table-hover
@@ -571,6 +577,12 @@
                   </table>
                 </div>
               </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3">
+            <a ngbNavLink>Social</a>
+            <ng-template ngbNavContent>
+              <p>TBD</p>
             </ng-template>
           </li>
         </ul>
