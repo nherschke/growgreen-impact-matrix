@@ -455,9 +455,49 @@
                 *ngIf="discountButtonsForm.get('discountRate').value !== null"
                 class="row mt-4"
               >
-                <div class="col-md-8 mx-auto">
-                  <div class="row text-center">
-                    <h5>Cost Benefit Analysis</h5>
+                <div class="col-md-6 mx-auto">
+                  <h5 class="text-center">Cost-Benefit Analysis</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="col-md-6"></p>
+                        <p class="col-md-3 text-center">Worst-Case Scenario</p>
+                        <p class="col-md-3 text-center">Best-Case Scenario</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">NPV</p>
+                        <p class="col-md-3 text-center">
+                          {{ cbNpvWorst | number: "1.0-2" }}
+                        </p>
+                        <p class="col-md-3 text-center">
+                          {{ cbNpvBest | number: "1.0-2" }}
+                        </p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">ROI Ratio</p>
+                        <p class="col-md-3 text-center">
+                          {{ roiRatioWorst | number: "1.0-2" }}
+                        </p>
+                        <p class="col-md-3 text-center">
+                          {{ roiRatioBest | number: "1.0-2" }}
+                        </p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">ROI Ratio (undiscounted)</p>
+                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">X</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">B/C Ratio</p>
+                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">X</p>
+                      </div>
+                      <div class="row">
+                        <p class="col-md-6">B/C Ratio (undiscounted)</p>
+                        <p class="col-md-3 text-center">X</p>
+                        <p class="col-md-3 text-center">X</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
