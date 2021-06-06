@@ -50,10 +50,10 @@ export class CalculationService {
     wallSize: number,
     investment: number
   ) {
-    this.precipitation = precipitation;
-    this.lifespan = lifespan;
-    this.wallSize = wallSize;
-    this.investment = investment;
+    this.precipitation = +precipitation;
+    this.lifespan = +lifespan;
+    this.wallSize = +wallSize;
+    this.investment = +investment;
   }
 
   calculateWithWallSize() {
@@ -95,7 +95,7 @@ export class CalculationService {
     this.totalMin = this.investmentMin + this.maintenance + this.disposal;
     this.totalMax = this.investmentMax + this.maintenance + this.disposal;
 
-    // Environmental Impact
+    // Environmental Impact Cost Benefits
     this.airQualityMin =
       wallSize * this.lifespan * this.data.AIR_QUALITY_MONETIZATION_MIN;
     this.airQualityMax =
@@ -113,7 +113,7 @@ export class CalculationService {
 
     // Economic Cost Benefits
     this.wallLongevity =
-      wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_MONETIZATION;
+      this.lifespan >= 35 ? this.data.MEMBRANE_LONGEVITY_MONETIZATION : 0;
     this.propertyValue =
       wallSize * this.lifespan * this.data.PROPERTY_VALUE_MONETIZATION;
 
