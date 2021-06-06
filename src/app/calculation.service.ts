@@ -113,7 +113,7 @@ export class CalculationService {
 
     // Economic Cost Benefits
     this.wallLongevity =
-      this.lifespan >= 35 ? this.data.MEMBRANE_LONGEVITY_MONETIZATION : 0;
+      this.wallSize * this.lifespan * this.data.MEMBRANE_LONGEVITY_MONETIZATION;
     this.propertyValue =
       wallSize * this.lifespan * this.data.PROPERTY_VALUE_MONETIZATION;
 
