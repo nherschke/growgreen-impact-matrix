@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { DataComponent } from './data/data.component';
-import { FutureComponent } from './future/future.component';
 import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { HomeComponent } from './home/home.component';
 import { InputComponent } from './input/input.component';
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'vertical-garden', component: VerticalGardenComponent },
   { path: 'green-roof', component: GreenRoofComponent },
   { path: 'data', component: DataComponent },
-  { path: 'future', component: FutureComponent },
   { path: 'about', component: AboutComponent },
   { path: 'input', component: InputComponent },
   { path: 'output', component: OutputComponent },

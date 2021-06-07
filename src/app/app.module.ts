@@ -9,7 +9,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NbsComponent } from './nbs/nbs.component';
 import { GreenRoofComponent } from './green-roof/green-roof.component';
 import { AboutComponent } from './about/about.component';
-import { FutureComponent } from './future/future.component';
 import { VerticalGardenComponent } from './vertical-garden/vertical-garden.component';
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
@@ -25,11 +24,10 @@ import { DataComponent } from './data/data.component';
     NbsComponent,
     GreenRoofComponent,
     AboutComponent,
-    FutureComponent,
     VerticalGardenComponent,
     InputComponent,
     OutputComponent,
-    DataComponent
+    DataComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +37,6 @@ import { DataComponent } from './data/data.component';
     FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
