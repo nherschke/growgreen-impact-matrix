@@ -90,7 +90,7 @@ export class CalculationService {
     // Real Costs
     this.investmentMin = wallSize * this.data.INVESTMENT_MIN;
     this.investmentMax = wallSize * this.data.INVESTMENT_MAX;
-    this.maintenance = wallSize * this.data.MAINTENANCE;
+    this.maintenance = wallSize * this.lifespan * this.data.MAINTENANCE;
     this.disposal = wallSize * this.data.DISPOSAL;
     this.totalMin = this.investmentMin + this.maintenance + this.disposal;
     this.totalMax = this.investmentMax + this.maintenance + this.disposal;
