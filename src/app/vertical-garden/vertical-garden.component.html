@@ -9,7 +9,15 @@
           <h5 class="card-title">Input</h5>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="precipitation">Precipitation</label>
+              <label for="precipitation"
+                >Precipitation
+                <fa-icon
+                  [icon]="faQuestionCircle"
+                  class="ml-2"
+                  ngbTooltip="Valencia: 300"
+                  [openDelay]="100"
+                ></fa-icon>
+              </label>
               <div class="input-group has-validation">
                 <input
                   type="text"

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CalculationService } from '../calculation.service';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-vertical-garden',
@@ -11,6 +12,7 @@ import { CalculationService } from '../calculation.service';
 export class VerticalGardenComponent implements OnInit {
   inputForm: FormGroup;
   toggle: boolean = true;
+  faQuestionCircle = faQuestionCircle;
 
   constructor(
     private formBuilder: FormBuilder,
