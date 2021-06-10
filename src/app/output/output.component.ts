@@ -43,6 +43,19 @@ export class OutputComponent implements OnInit {
 
   rows: Row[] = [];
 
+  totalSCW: number = 0;
+  totalSCB: number = 0;
+  totalRCW: number = 0;
+  totalRCB: number = 0;
+  totalDcCfW: number = 0;
+  totalDcCfB: number = 0;
+  totalNPVW: number = 0;
+  totalNPVB: number = 0;
+  totalDcSCW: number = 0;
+  totalDcSCB: number = 0;
+  totalDcRCW: number = 0;
+  totalDcRCB: number = 0;
+
   cbNpvWorst: number = 0;
   cbNpvBest: number = 0;
   roiRatioWorst: number = 0;
@@ -91,6 +104,19 @@ export class OutputComponent implements OnInit {
 
         this.bcRatioWorst = 0;
         this.bcRatioBest = 0;
+
+        this.totalSCW = 0;
+        this.totalSCB = 0;
+        this.totalRCW = 0;
+        this.totalRCB = 0;
+        this.totalDcCfW = 0;
+        this.totalDcCfB = 0;
+        this.totalNPVW = 0;
+        this.totalNPVB = 0;
+        this.totalDcSCW = 0;
+        this.totalDcSCB = 0;
+        this.totalDcRCW = 0;
+        this.totalDcRCB = 0;
 
         let discountRate: number = +value / 100;
         let year: number;
@@ -172,6 +198,20 @@ export class OutputComponent implements OnInit {
           cNpvW += npvW;
           cNpvB += npvB;
 
+          // Total row
+          this.totalSCW += scW;
+          this.totalSCB += scB;
+          this.totalRCW += rcW;
+          this.totalRCB += rcB;
+          this.totalDcCfW += dcCfW;
+          this.totalDcCfB += dcCfB;
+          this.totalNPVW += npvW;
+          this.totalNPVB += npvB;
+          this.totalDcSCW += dcScW;
+          this.totalDcSCB += dcScB;
+          this.totalDcRCW += dcRcW;
+          this.totalDcRCB += dcRcB;
+
           // Cost-Benefit Analysis
           this.cbNpvWorst += npvW;
           this.cbNpvBest += npvB;
@@ -198,17 +238,19 @@ export class OutputComponent implements OnInit {
           });
         }
 
-        this.roiRatioWorst = dcCfW / this.data.INVESTMENT_MAX;
-        this.roiRatioBest = dcCfB / this.data.INVESTMENT_MIN;
+        this.roiRatioWorst = this.totalDcCfW / this.data.INVESTMENT_MAX;
+        this.roiRatioBest = this.totalDcCfB / this.data.INVESTMENT_MIN;
 
-        this.roiRatioUndcWorst = (scW - rcB) / this.data.INVESTMENT_MAX;
-        this.roiRatioUndcBest = (scB - rcW) / this.data.INVESTMENT_MIN;
+        this.roiRatioUndcWorst =
+          (this.totalSCW - this.totalRCB) / this.data.INVESTMENT_MAX;
+        this.roiRatioUndcBest =
+          (this.totalSCB - this.totalRCW) / this.data.INVESTMENT_MIN;
 
-        this.bcRatioWorst = dcScW / dcRcB;
-        this.bcRatioBest = dcScB / dcRcW;
+        this.bcRatioWorst = this.totalDcSCW / this.totalDcRCB;
+        this.bcRatioBest = this.totalDcSCB / this.totalDcRCW;
 
-        this.bcRatioUndcWorst = scW / rcB;
-        this.bcRatioUndcBest = scB / rcW;
+        this.bcRatioUndcWorst = this.totalSCW / this.totalRCB;
+        this.bcRatioUndcBest = this.totalSCB / this.totalRCW;
       });
   }
 

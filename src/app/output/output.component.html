@@ -461,46 +461,46 @@
                       <div class="row">
                         <p class="col-md-6">NPV</p>
                         <p class="col-md-3 text-center">
-                          {{ cbNpvWorst | number: "1.0-2" }}
+                          {{ cbNpvWorst | number: "1.0-3" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ cbNpvBest | number: "1.0-2" }}
+                          {{ cbNpvBest | number: "1.0-3" }}
                         </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">ROI Ratio</p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioWorst | number: "1.0-5" }}
+                          {{ roiRatioWorst | number: "1.0-3" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioBest | number: "1.0-5" }}
+                          {{ roiRatioBest | number: "1.0-3" }}
                         </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">ROI Ratio (undiscounted)</p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioUndcWorst | number: "1.0-5" }}
+                          {{ roiRatioUndcWorst | number: "1.0-3" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ roiRatioUndcBest | number: "1.0-5" }}
+                          {{ roiRatioUndcBest | number: "1.0-3" }}
                         </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">B/C Ratio</p>
                         <p class="col-md-3 text-center">
-                          {{ bcRatioWorst | number: "1.0-5" }}
+                          {{ bcRatioWorst | number: "1.0-3" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ bcRatioBest | number: "1.0-5" }}
+                          {{ bcRatioBest | number: "1.0-3" }}
                         </p>
                       </div>
                       <div class="row">
                         <p class="col-md-6">B/C Ratio (undiscounted)</p>
                         <p class="col-md-3 text-center">
-                          {{ bcRatioUndcWorst | number: "1.0-5" }}
+                          {{ bcRatioUndcWorst | number: "1.0-3" }}
                         </p>
                         <p class="col-md-3 text-center">
-                          {{ bcRatioUndcBest | number: "1.0-5" }}
+                          {{ bcRatioUndcBest | number: "1.0-3" }}
                         </p>
                       </div>
                     </div>
@@ -572,6 +572,25 @@
                         <td>{{ row.cumDcCashflowBest | number: "1.0-2" }}</td>
                         <td>{{ row.cumNPVWorst | number: "1.0-2" }}</td>
                         <td>{{ row.cumNPVBest | number: "1.0-2" }}</td>
+                      </tr>
+                      <tr>
+                        <th>Total</th>
+                        <th>{{ totalSCW | number: "1.0-2" }}</th>
+                        <th>{{ totalSCB | number: "1.0-2" }}</th>
+                        <th>{{ totalRCW | number: "1.0-2" }}</th>
+                        <th>{{ totalRCB | number: "1.0-2" }}</th>
+                        <td></td>
+                        <th>{{ totalDcCfW | number: "1.0-2" }}</th>
+                        <th>{{ totalDcCfB | number: "1.0-2" }}</th>
+                        <th>{{ totalNPVW | number: "1.0-2" }}</th>
+                        <th>{{ totalNPVB | number: "1.0-2" }}</th>
+                        <th>{{ totalDcSCW | number: "1.0-2" }}</th>
+                        <th>{{ totalDcSCB | number: "1.0-2" }}</th>
+                        <th>{{ totalDcRCW | number: "1.0-2" }}</th>
+                        <th>{{ totalDcRCB | number: "1.0-2" }}</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </table>
